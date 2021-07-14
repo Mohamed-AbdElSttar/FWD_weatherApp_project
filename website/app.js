@@ -2,12 +2,12 @@
 const zip_inp = document.getElementById("zip");
 const feelings_inp = document.getElementById("feelings");
 
-const api_key = "c9d46b244b22d681cdb66e7549190e10";
+const api_key = "c9d46b244b22d681cdb66e7549190e10&units=metric";
 const base_url = 'http://api.openweathermap.org/data/2.5/weather?zip=';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+let newDate = d.getMonth() + 1 + '/' + d.getDate() + '/' + d.getFullYear();
 const generate_btn = document.getElementById("generate");
 
 function generate() {
@@ -52,7 +52,7 @@ const updateUI = async () => {
     try {
         const allData = await request.json();
         document.getElementById('date').innerHTML = `date : ${allData.projectData.date}`;
-        document.getElementById('temp').innerHTML = `temprature : ${allData.projectData.temp}`;
+        document.getElementById('temp').innerHTML = `temprature : ${allData.projectData.temp} Celcius`;
         document.getElementById('content').innerHTML = `feelings : ${allData.projectData.feelings}`;
 
     } catch (error) {
